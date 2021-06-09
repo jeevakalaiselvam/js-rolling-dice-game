@@ -1,6 +1,6 @@
-# Guess The Number Game
+# Dice Rolling Game
 
-A Simple game using javascript and DOM manipulation
+A simple dice rolling game using javascript
 
 # Screenshots
 
