@@ -12,6 +12,11 @@ const btnHold = document.querySelector('.btn--hold');
 const player0El = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
 
+let diceSound = new Audio('dice.wav');
+let errorSound = new Audio('error.mp3');
+let holdSound = new Audio('hold.mp3');
+let winSound = new Audio('win.mp3');
+
 //Text content references
 score0El.textContent = 0;
 score1El.textContent = 0;
@@ -52,6 +57,7 @@ function switchPlayer() {
 
 //Rolling dice function
 btnRoll.addEventListener('click', () => {
+    diceSound.play();
     if (playing) {
         const dice = Math.trunc(Math.random() * 6) + 1; //Get a random number between 1 - 6 for dice
 
@@ -65,6 +71,7 @@ btnRoll.addEventListener('click', () => {
             document.querySelector(`#current--${activePlayer}`).textContent =
                 currentScore;
         } else {
+            errorSound.play();
             //If dice number is 1, Then the current user loses all score
             document.querySelector(`#current--${activePlayer}`).textContent = 0;
             switchPlayer();
@@ -80,7 +87,11 @@ btnHold.addEventListener('click', () => {
         document.querySelector(`#score--${activePlayer}`).textContent =
             scores[activePlayer];
 
-        if (scores[activePlayer] >= 100) {
+        current0El.textContent = 0;
+        current1El.textContent = 0;
+
+        if (scores[activePlayer] >= 50) {
+            winSound.play();
             playing = false;
             document
                 .querySelector(`.player--${activePlayer}`)
@@ -89,6 +100,7 @@ btnHold.addEventListener('click', () => {
                 .querySelector(`.player--${activePlayer}`)
                 .classList.remove('player--active');
         } else {
+            holdSound.play();
             switchPlayer();
         }
     }
