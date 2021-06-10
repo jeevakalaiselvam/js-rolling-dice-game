@@ -12,10 +12,10 @@ const btnHold = document.querySelector('.btn--hold');
 const player0El = document.querySelector('.player--0');
 const player1El = document.querySelector('.player--1');
 
-let diceSound = new Audio('dice.wav');
-let errorSound = new Audio('error.mp3');
-let holdSound = new Audio('hold.mp3');
-let winSound = new Audio('win.mp3');
+let diceSound = new Audio('sounds/dice.wav');
+let errorSound = new Audio('sounds/error.mp3');
+let holdSound = new Audio('sounds/hold.mp3');
+let winSound = new Audio('sounds/win.mp3');
 
 //Text content references
 score0El.textContent = 0;
@@ -63,7 +63,7 @@ btnRoll.addEventListener('click', () => {
 
         diceEl.classList.remove('hidden'); //Make the dice visible
 
-        diceEl.src = `dice-${dice}.png`; //Select the dice image based on random number for dice
+        diceEl.src = `images/dice-${dice}.png`; //Select the dice image based on random number for dice
 
         if (dice !== 1) {
             //If dice number is not 1, Add the dice number to current score for current player
